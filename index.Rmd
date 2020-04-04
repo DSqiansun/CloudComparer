@@ -13,9 +13,11 @@ output:
 
 ```{r setup, include=FALSE}
 pacman::p_load( data.table,DT)
-CloudComparer <- fread("data/cloud_service.csv", header = T, encoding = 'UTF-8',stringsAsFactors=T )
+CloudComparer <- fread("data/cloud_service.csv", header = T, encoding = 'UTF-8',stringsAsFactors=F )
 clos <- c("category_name","service_name" ,"aws_name", "azure_name","google_name","ibm_name","oracle_name","alibaba_name")
 
+CloudComparer$category_name <- as.factor(CloudComparer$category_name)
+CloudComparer$service_name <- as.factor(CloudComparer$service_name)
 ```
 
 
