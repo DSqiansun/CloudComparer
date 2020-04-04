@@ -51,3 +51,7 @@ Temporary Items
 /.vs/CloudComparer/v15/.suo
 /img/9d0d14113f8251763f86593e45bc2c0a.ico.zip
 .Rproj.user
+*.Rproj
+*html
+img
+*png
