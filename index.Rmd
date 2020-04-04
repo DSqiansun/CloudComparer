@@ -1,0 +1,39 @@
+---
+title: "Cloud Comparer"
+#date: "`r paste0('update:', format(Sys.time(), '%d %B, %Y'))`"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    theme: yeti
+    vertical_layout: fill
+
+  #  navbar:
+  #    - { title: "Blog", href: "https://dsqiansun.github.io/blog/", align: right }
+---
+
+```{r setup, include=FALSE}
+pacman::p_load( data.table,DT)
+CloudComparer <- fread("data/cloud_service.csv", header = T, encoding = 'UTF-8' )
+clos <- c("category_name","service_name" ,"aws_name", "azure_name","google_name","ibm_name","oracle_name","alibaba_name")
+
+```
+
+
+Column
+-----------------------------------------------------------------------
+
+###
+```{r}
+
+DT::datatable(CloudComparer[, ..clos],
+              escape = FALSE,
+              rownames = FALSE,
+              filter = 'top',
+              extensions = 'Buttons',
+              options = list(
+              dom = 'Bfrtip',
+              buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+              pageLength = 13
+  ))
+```
+
